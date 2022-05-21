@@ -1,6 +1,6 @@
 {
-  "/prospectos-vida": {
-    "target": "http://192.168.1.115:9002",
+  "/orden": {
+    "target": "http://localhost:8090",
     "logLevel": "debug"
   }
 
