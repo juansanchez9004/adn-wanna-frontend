@@ -5,18 +5,21 @@ import { ListarPedidosEntregadosComponent } from './components/listar-pedidos-en
 import { OrdenarPedidoComponent } from './components/ordenar-pedido/ordenar-pedido.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { SharedModule } from '@shared/shared.module';
-
+import { PedidoService } from './shared/service/pedido.service';
+import { AgregarProductosComponent } from './components/ordenar-pedido/agregar-productos/agregar-productos.component';
 
 @NgModule({
   declarations: [
     EntregarPedidoComponent,
     ListarPedidosEntregadosComponent,
     OrdenarPedidoComponent,
-    PedidoComponent
+    PedidoComponent,
+    AgregarProductosComponent
   ],
   imports: [
     PedidoRoutingModule,
     SharedModule
-  ]
+  ],
+  providers: [PedidoService]
 })
 export class PedidoModule { }
