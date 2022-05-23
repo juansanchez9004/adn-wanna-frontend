@@ -4,6 +4,7 @@ import { HttpService } from '@core-service/http.service';
 import { environment } from 'src/environments/environment';
 import { Cliente } from '../model/cliente';
 import { Producto } from '../model/producto';
+import { ResumenPedido } from '../model/resumen-pedido';
 import { ComandoSolicitudOrdenar } from '../model/comando-solicitud-ordenar';
 
 @Injectable()
@@ -24,11 +25,14 @@ export class PedidoService {
     return this.http.doGet<Producto[]>(`${environment.endpoint}/producto/todos`, this.http.optsName('consultar todos los productos'));
   }
 
-  /*
-  public consultarEntregados() {
-
+  public consultarTodosLosPedidosPendientes() {
+    return this.http.doGet<ResumenPedido[]>(`${environment.endpoint}/pedido/pendientes`, this.http.optsName('consultar todos los pedidos pendientes'));
   }
 
+  public entregarPedido(idPedido: number) {
+    return this.http.doPost<any, void>(`${environment.endpoint}/pedido/entregar/${idPedido}`, "", this.http.optsName('entregar pedidos'));
+  }
+/*
   public consultarEntregados() {
 
   }*/
