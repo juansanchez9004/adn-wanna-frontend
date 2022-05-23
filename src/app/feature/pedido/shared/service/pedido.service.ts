@@ -14,7 +14,7 @@ export class PedidoService {
 
   public crearOrden(comandoSolicitudOrdenar: ComandoSolicitudOrdenar) {
     return this.http.doPost<ComandoSolicitudOrdenar, number>(`${environment.endpoint}/pedido`, comandoSolicitudOrdenar,
-                                            this.http.optsName('crear/ pedidos'));
+                                            this.http.optsName('crear pedidos'));
   }
 
   public consultarTodosLosClientes() {
@@ -32,8 +32,8 @@ export class PedidoService {
   public entregarPedido(idPedido: number) {
     return this.http.doPost<any, void>(`${environment.endpoint}/pedido/entregar/${idPedido}`, "", this.http.optsName('entregar pedidos'));
   }
-/*
-  public consultarEntregados() {
 
-  }*/
+  public consultarTodosLosPedidosEntregados() {
+    return this.http.doGet<ResumenPedido[]>(`${environment.endpoint}/pedido/entregados`, this.http.optsName('consultar todos los pedidos entregados'));
+  }
 }
