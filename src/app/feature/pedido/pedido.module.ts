@@ -7,6 +7,7 @@ import { PedidoComponent } from './components/pedido/pedido.component';
 import { SharedModule } from '@shared/shared.module';
 import { PedidoService } from './shared/service/pedido.service';
 import { AgregarProductosComponent } from './components/ordenar-pedido/agregar-productos/agregar-productos.component';
+import { InformacionPedidoComponent } from './components/informacion-pedido/informacion-pedido.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AgregarProductosComponent } from './components/ordenar-pedido/agregar-p
     ListarPedidosEntregadosComponent,
     OrdenarPedidoComponent,
     PedidoComponent,
-    AgregarProductosComponent
+    AgregarProductosComponent,
+    InformacionPedidoComponent
   ],
   imports: [
     PedidoRoutingModule,
