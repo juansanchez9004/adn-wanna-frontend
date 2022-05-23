@@ -21,23 +21,11 @@
                 <legend class="legend-custom">Pedido A Entregar</legend>
 
                 <div class="row">
-                    <div class="mb-3 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
-                        <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1"><strong>ID: </strong> {{ pedidoAEntregar.id }}</h5>
-                                    <span class="badge bg-primary rounded-pill">PENDIENTE</span>
-                                </div>
-                            </li>
-
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <p class="mb-1"><strong>Fecha: </strong> {{ pedidoAEntregar.fecha | date }}</p>
-                                    <p class="mb-1"><strong>Sitio de Entrega: </strong> {{ pedidoAEntregar.sitioEntrega }}</p>
-                                    <p class="mb-1"><strong>Total: </strong> {{ pedidoAEntregar.valorTotal | currency }}</p>
-                                </div>
-                            </li>
-                        </ul>
+                    <div class="mb-3 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <app-informacion-pedido [pedidoResumen]="pedidoAEntregar" 
+                                                [estadoPedido]="'PENDIENTE'"
+                                                [color]="'primary'">
+                        </app-informacion-pedido>
                     </div>
 
                     <div class="mb-3 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
