@@ -1,5 +1,5 @@
 {
-  "/orden": {
+  "/wanna": {
     "target": "http://localhost:8090",
     "logLevel": "debug"
   }
