@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="mb-3 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+        <label for="producto" class="form-label">Producto</label>
+        <select (change)="asignarValorProducto()" id="producto" name="producto" class="form-select" [(ngModel)]="productoSeleccionado">
+            <option [ngValue]="null" hidden>Seleccionar Producto</option>
+            <option *ngFor="let producto of listaProductos | async" [ngValue]="producto">{{producto.tipoProducto}} - {{producto.nombre}}</option>
+        </select>
+    </div>
+
+    <div class="mb-3 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+        <label for="valor" class="form-label">Valor Producto</label>
+        <input [disabled]="true" id="valor" name="valor" class="form-control" type="text" [value]="valor | currency" />
+    </div>
+
+    <div class="mb-3 col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+        <label for="cantidad" class="form-label">Cantidad</label>
+        <input [disabled]="!this.productoSeleccionado" id="cantidad" name="cantidad" class="form-control" type="number" [(ngModel)]="cantidad" />
+    </div>
+
+    <div class="mb-3 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+        <div class="mt-4-custom">
+            <button [disabled]="this.inhabilitarAgregar()" type="button" class="btn btn-secondary" (click)="this.agregarProducto()">
+                <i class="bi bi-plus-square-fill text-white" aria-hidden="true"></i> Agregar
+            </button>
+        </div>
+    </div>
+</div>

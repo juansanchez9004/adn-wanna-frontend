@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,29 +6,22 @@
       </button>
   
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">  
           <li class="nav-item">
-            <a class="nav-link" id="linkProducto" routerLink="./" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">Pedido</a>
+            <a class="nav-link" id="linkCrearProducto" routerLink="./ordenar" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">Ordenar</a>
           </li>
   
           <li class="nav-item">
-            <a class="nav-link" id="linkCrearProducto" routerLink="./ordenar" routerLinkActive="active">Ordenar pedido</a>
+            <a class="nav-link" id="linkBorrarProducto" routerLink="./entregar" routerLinkActive="active">Entregar</a>
           </li>
   
           <li class="nav-item">
-            <a class="nav-link" id="linkBorrarProducto" routerLink="./entregar" routerLinkActive="active">Entregar pedido</a>
-          </li>
-  
-          <li class="nav-item">
-            <a class="nav-link" id="linkListarProducto" routerLink="./listar/entregados" routerLinkActive="active">listar pedido entregados</a>
+            <a class="nav-link" id="linkListarProducto" routerLink="./listar/entregados" routerLinkActive="active">Listar Entregados</a>
           </li>
         </ul>
       </div>
     </div>
-  </nav>
+</nav>
   
-  <div class="container  text-center mt-5 mb-5">
-    <h1>Bootstrap 5 is working fine with Angular 13!!</h1>
-  </div>
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>

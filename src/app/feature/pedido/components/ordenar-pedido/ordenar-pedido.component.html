@@ -1,1 +1,81 @@
-<p>ordenar-pedido works!</p>
+<div class="container-fluid">
+    <div class="mt-3">
+        <h1 class="mb-3">Ordenar Pedido</h1>
+
+        <form [formGroup]="pedidoForm" (ngSubmit)="ordenarPedido()">
+            <div class="container-fluid">
+                <fieldset class="fieldset-custom">
+                    <legend class="legend-custom">Información de entrega</legend>
+
+                    <div class="row">
+                        <div class="mb-3 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                            <label for="cliente" class="form-label">Cliente</label>
+                            <select validar formControlName="cliente" id="cliente" name="cliente" class="form-select" aria-label="Default select example">
+                                <option value="" hidden>Seleccionar Cliente</option>
+                                <option *ngFor="let cliente of listaClientes | async" [value]="cliente.id">{{cliente.nombre}}</option>
+                            </select>
+                        </div>
+                
+                        <div class="mb-3 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                            <label for="direccion" class="form-label">Dirección Entrega</label>
+                            <input validar formControlName="direccion" id="direccion" name="direccion" type="text" class="form-control" id="cliente" placeholder="Ingrese dirección de entrega" />
+                        </div>
+    
+                        <div class="mb-3 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                            <label for="municipio" class="form-label">Municipio Entrega</label>
+                            <input validar formControlName="municipio" id="municipio" name="municipio" type="text" class="form-control" id="cliente" placeholder="Ingrese municipio de entrega" />
+                        </div>
+                    </div>    
+                </fieldset>
+
+                <fieldset class="fieldset-custom">
+                    <legend class="legend-custom">Agregar Productos</legend>
+
+                    <app-agregar-productos (notificarProductoOrdenado)="eventoProductoOrdenado($event)"></app-agregar-productos>
+                </fieldset>
+
+                <fieldset class="fieldset-custom">
+                    <legend class="legend-custom">Productos Ordenados</legend>
+
+                    <div *ngIf="this.listaProductosOrdenados.length > 0">
+                        <div class="row">
+                            <div *ngFor="let productoOrdenado of listaProductosOrdenados" class="mb-3 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                                <div class="contenedor-producto-ordenado">
+                                    <div class="mb-1">
+                                        <button class="badge bg-danger span-block" (click)="eliminarProductoOrdenado(productoOrdenado)">
+                                            <i class="bi bi-file-excel" aria-hidden="true"></i> Eliminar Producto
+                                        </button>
+                                    </div>
+                                    <div>
+                                        {{ productoOrdenado.producto.tipoProducto }} - {{ productoOrdenado.producto.nombre }}
+                                    </div>
+                                    
+                                    <div class="mb-1">
+                                        <span class="badge bg-primary rounded-pill span-block">
+                                            Valor Unitario: {{ productoOrdenado.producto.valor | currency }}
+                                        </span>
+                                        <span class="badge bg-primary rounded-pill">
+                                            Cantidad: {{ productoOrdenado.cantidad }}
+                                        </span>
+                                    </div>
+    
+                                    <div class="mb-1"><span class="badge bg-primary rounded-pill">Total: {{ productoOrdenado.valor | currency }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="this.listaProductosOrdenados.length < 1">
+                        <span style="color: red;">Dato<strong> obligatorio </strong></span>
+                    </div>
+                </fieldset>
+                
+                <div class="row">
+                    <div class="mt-3 mb-2 d-flex justify-content-center cursor-btn">
+                        <button id="guardarDatosButton" [disabled]="this.listaProductosOrdenados.length < 1" type="submit" class="btn btn-dark rounded-pill">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
