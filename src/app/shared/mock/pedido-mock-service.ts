@@ -1,4 +1,5 @@
 import { HttpErrorResponse } from "@angular/common/http";
+import { ResumenPedido } from "@pedido/shared/model/resumen-pedido";
 
 export class PedidoMockService {
   crearComandoSolicitudOrdenar() {
@@ -108,11 +109,15 @@ export class PedidoMockService {
     ]);
   }
 
-  crearHttpError501() {
+  crearHttpRespuestaError501() {
     return new HttpErrorResponse({
       error: 'test 501 error',
       status: 501,
       statusText: 'Internal Server Error'
     });
+  }
+
+  crearResumenPedidoPendiente() {
+    return new ResumenPedido(10, '2022-05-15', 'Calle 34 # 12', 125000, 'PENDIENTE');
   }
 }

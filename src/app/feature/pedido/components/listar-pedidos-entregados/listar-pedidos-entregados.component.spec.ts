@@ -43,7 +43,7 @@ describe('ListarPedidosEntregadosComponent', () => {
   });
 
   it('Error al consultar todos los pedidos entregados', () => {
-    const errorResponse = pedidoMockService.crearHttpError501();
+    const errorResponse = pedidoMockService.crearHttpRespuestaError501();
     spyOn(service, 'consultarTodosLosPedidosEntregados').and.returnValue(throwError(errorResponse));
     component.ngOnInit();
     expect(component.listaPedidosEntregados).toBeUndefined();
