@@ -27,6 +27,10 @@ describe('PedidoService', () => {
     service = TestBed.inject(PedidoService);
   });
 
+  afterEach(() => {
+    httpMock.verify();
+  });
+
   it('should be created', () => {
     const pedidoService: PedidoService = TestBed.inject(PedidoService);
     expect(pedidoService).toBeTruthy();
