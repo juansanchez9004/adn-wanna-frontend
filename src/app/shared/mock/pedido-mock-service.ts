@@ -120,4 +120,13 @@ export class PedidoMockService {
   crearResumenPedidoPendiente() {
     return new ResumenPedido(10, '2022-05-15', 'Calle 34 # 12', 125000, 'PENDIENTE');
   }
+
+  crearProducto() {
+    return {
+      id: 5,
+      nombre: "Kit Plantilla Maquillaje Cosmetico Delineador Cejas",
+      tipoProducto: "COSMETICO",
+      valor: 15000.00
+    };
+  }
 }
