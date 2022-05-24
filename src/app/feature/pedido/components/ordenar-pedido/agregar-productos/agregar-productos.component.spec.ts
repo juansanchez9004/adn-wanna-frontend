@@ -49,7 +49,7 @@ describe('AgregarProductosComponent', () => {
   });
 
   it('Habilitar boton agregar', () => {
-    component.productoSeleccionado = pedidoMockService.crearProducto();
+    component.productoSeleccionado = pedidoMockService.crearProductoCosmetico();
     component.cantidad = 2;
 
     let inhabilitar = component.inhabilitarAgregar();
@@ -59,7 +59,7 @@ describe('AgregarProductosComponent', () => {
   });
 
   it('Evento Agregar producto', () => {
-    component.productoSeleccionado = pedidoMockService.crearProducto();
+    component.productoSeleccionado = pedidoMockService.crearProductoPerfume();
     component.cantidad = 4;
 
     component.notificarProductoOrdenado.subscribe((productoOrdenado: ProductoOrdenado) => {
@@ -71,7 +71,7 @@ describe('AgregarProductosComponent', () => {
   });
 
   it('Asignar valor al producto seleccionado', () => {
-    component.productoSeleccionado = pedidoMockService.crearProducto();
+    component.productoSeleccionado = pedidoMockService.crearProductoReloj();
     
     component.asignarValorProducto();
 

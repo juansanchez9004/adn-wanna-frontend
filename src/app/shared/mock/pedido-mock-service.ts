@@ -4,14 +4,15 @@ import { ResumenPedido } from "@pedido/shared/model/resumen-pedido";
 export class PedidoMockService {
   crearComandoSolicitudOrdenar() {
     return {
-      idCliente: 2,
+      idCliente: 3,
       comandoPuntoEntrega: {
-          direccion: "Cra 35 sur # 103 aa",
-          municipio: "Bello" 
+          direccion: "Calle 2 sur # 34 a",
+          municipio: "Medellin" 
       },
       comandoProductosOrdenados: [
-          { idProducto: 2, cantidad: 1},
-          { idProducto: 9, cantidad: 4}
+          { idProducto: 8, cantidad: 2},
+          { idProducto: 3, cantidad: 1},
+          { idProducto: 5, cantidad: 3}
       ]
     };
   }
@@ -121,12 +122,62 @@ export class PedidoMockService {
     return new ResumenPedido(10, '2022-05-15', 'Calle 34 # 12', 125000, 'PENDIENTE');
   }
 
-  crearProducto() {
+  crearProductoCosmetico() {
     return {
       id: 5,
       nombre: "Kit Plantilla Maquillaje Cosmetico Delineador Cejas",
       tipoProducto: "COSMETICO",
       valor: 15000.00
     };
+  }
+
+  crearProductoReloj() {
+    return {
+      id: 3,
+      nombre: "Fossil RT 6",
+      tipoProducto: "RELOJ",
+      valor: 458000.00
+    };
+  }
+
+  crearProductoPerfume() {
+    return {
+      id: 8,
+      nombre: "Amber Out Edition Gold",
+      tipoProducto: "PERFUME",
+      valor: 325000.00
+    };
+  }
+
+  crearProductoOrdenado() {
+    return {
+      id: 14,
+      producto: this.crearProductoCosmetico(),
+      cantidad: 1,
+      valor: 15000.00
+    };
+  }
+
+  crearListadoProductosOrdenados() {
+    return ([
+      {
+        id: 12,
+        producto: this.crearProductoPerfume(),
+        cantidad: 2,
+        valor: 650000.00
+      },
+      {
+        id: 13,
+        producto: this.crearProductoReloj(),
+        cantidad: 1,
+        valor: 458000.00
+      },
+      {
+        id: 14,
+        producto: this.crearProductoCosmetico(),
+        cantidad: 3,
+        valor: 45000.00
+      }
+    ]);
   }
 }
