@@ -1,3 +1,5 @@
+import { HttpErrorResponse } from "@angular/common/http";
+
 export class PedidoMockService {
   crearComandoSolicitudOrdenar() {
     return {
@@ -104,5 +106,13 @@ export class PedidoMockService {
         estado: "ENTREGADO"
       }
     ]);
+  }
+
+  crearHttpError501() {
+    return new HttpErrorResponse({
+      error: 'test 501 error',
+      status: 501,
+      statusText: 'Internal Server Error'
+    });
   }
 }
