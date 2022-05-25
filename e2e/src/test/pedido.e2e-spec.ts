@@ -29,7 +29,7 @@ describe('Page Pedido', () => {
         });
     });
 
-    xit('Deberia Ordenar un pedido con dos productos', async () => {
+    it('Deberia Ordenar un pedido con dos productos', async () => {
         const NOMBRE_CLIENTE = 'Luna Maria';
         const DIRRECION_ENTREGA = 'Calle 98 # 34a norte 88';
         const MUNICIPIO_ENTREGA = 'Girardota';
@@ -75,7 +75,7 @@ describe('Page Pedido', () => {
         await pedido.clickOkSuccessAlerta();
     });
 
-    xit('Deberia inhabilitar boton de guardar porque no se agregan productos', async () => {
+    it('Deberia inhabilitar boton de guardar porque no se agregan productos', async () => {
         const NOMBRE_CLIENTE = 'Luna Maria';
         const DIRRECION_ENTREGA = 'Calle 98 # 34a norte 88';
         const MUNICIPIO_ENTREGA = 'Girardota';
@@ -111,8 +111,22 @@ describe('Page Pedido', () => {
         expect(await pedido.getAlertaExitosa().isPresent()).toEqual(true);
         expect(page.getTitleTextByName('swal2-title')).toEqual('Hecho');
 
-        await browser.sleep(2000);
+        await pedido.clickOkSuccessAlertaByElementName('swal2-confirm');
+    });
 
-        await pedido.clickOkSuccessAlerta();
+    it('Deberia listar pedidos entregados', async () => {
+        
+        pedido.clickBotonListarEntregados();
+        expect(page.getTextBySelectorComponentAndTag('app-listar-pedidos-entregados', 'h1')).toEqual('Pedidos Entregados');
+
+        expect(page.getTextBySelectorComponentAndTag('app-listar-pedidos-entregados', '#legend-lista-pedidos')).toEqual('Lista de Pedidos');
+        
+        expect(await pedido.getAlertaExitosa().isPresent()).toEqual(true);
+        expect(await page.getTitleTextByName('swal2-title')).toEqual('Hecho');
+
+        browser.sleep(1000); 
+        
+        const cantidadPedidosCargados = await pedido.contarPedidosCargadosEnPanel();
+        expect(cantidadPedidosCargados).toEqual(await pedido.contarPedidosCargadosEnPanel());
     });
 });

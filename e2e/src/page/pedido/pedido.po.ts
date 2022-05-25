@@ -56,6 +56,10 @@ export class PedidoPage {
     clickOkSuccessAlerta() {
         return this.btnOkSuccessAlerta.click();
     }
+
+    clickOkSuccessAlertaByElementName(selectorName: string) {
+        return element(by.className(selectorName)).click();
+    }
     
     async ingresarDireccion(direccionEntrega: string) {
         this.inputDireccion.clear();
@@ -99,8 +103,16 @@ export class PedidoPage {
         return element.all(by.css('app-ordenar-pedido .contenedor-producto-ordenado')).count();
     }
 
+    async contarPedidosCargadosEnPanel() {
+        return element.all(by.css('app-informacion-pedido ul.list-group')).count();
+    }
+
     async getValueInput(idSelector: string) {
         return element(by.id(idSelector)).getAttribute('value');
+    }
+
+    getAlertaExitosa() {
+        return this.successAlerta;
     }
 
     async moverMouseAElementoByCss(selectorElemento: string) {
@@ -108,11 +120,5 @@ export class PedidoPage {
         await browser.actions().mouseMove(elemento).perform();
     }
 
-    getAlertaExitosa() {
-        return this.successAlerta;
-    }
-
-    async contarPedidosCargadosEnPanel() {
-        return element.all(by.css('app-entregar-pedido ul.list-group')).count();
-    }
+    
 }
