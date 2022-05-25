@@ -43,7 +43,7 @@ export class OrdenarPedidoComponent implements OnInit {
           title: 'Hecho',
           text: 'Su pedido se ha creado exitosamente.',
           showConfirmButton: true,
-          timer: 5000
+          timer: 20000
         });
 
         this.inicializarPedido();
@@ -54,7 +54,7 @@ export class OrdenarPedidoComponent implements OnInit {
         title: 'Opps...',
         text: `Se ha generado un error. ${error.error.mensaje}`,
         showConfirmButton: true,
-        timer: 5000
+        timer: 20000
       });
 
       this.inicializarPedido();

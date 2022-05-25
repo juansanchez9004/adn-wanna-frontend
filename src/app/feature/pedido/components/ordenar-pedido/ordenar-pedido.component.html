@@ -5,7 +5,7 @@
         <form [formGroup]="pedidoForm" (ngSubmit)="ordenarPedido()">
             <div class="container-fluid">
                 <fieldset class="fieldset-custom">
-                    <legend class="legend-custom">Información de entrega</legend>
+                    <legend id="legend-informacion-entrega" class="legend-custom">Información de entrega</legend>
 
                     <div class="row">
                         <div class="mb-3 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
@@ -18,31 +18,31 @@
                 
                         <div class="mb-3 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
                             <label for="direccion" class="form-label">Dirección Entrega</label>
-                            <input validar formControlName="direccion" id="direccion" name="direccion" type="text" class="form-control" id="cliente" placeholder="Ingrese dirección de entrega" />
+                            <input validar formControlName="direccion" id="direccion" name="direccion" type="text" class="form-control" placeholder="Ingrese dirección de entrega" />
                         </div>
     
                         <div class="mb-3 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
                             <label for="municipio" class="form-label">Municipio Entrega</label>
-                            <input validar formControlName="municipio" id="municipio" name="municipio" type="text" class="form-control" id="cliente" placeholder="Ingrese municipio de entrega" />
+                            <input validar formControlName="municipio" id="municipio" name="municipio" type="text" class="form-control" placeholder="Ingrese municipio de entrega" />
                         </div>
                     </div>    
                 </fieldset>
 
                 <fieldset class="fieldset-custom">
-                    <legend class="legend-custom">Agregar Productos</legend>
+                    <legend id="legend-agregar-producto" class="legend-custom">Agregar Productos</legend>
 
                     <app-agregar-productos (notificarProductoOrdenado)="eventoProductoOrdenado($event)"></app-agregar-productos>
                 </fieldset>
 
                 <fieldset class="fieldset-custom">
-                    <legend class="legend-custom">Productos Ordenados</legend>
+                    <legend id="legend-productos-ordenados" class="legend-custom">Productos Ordenados</legend>
 
                     <div *ngIf="this.listaProductosOrdenados.length > 0">
                         <div class="row">
                             <div *ngFor="let productoOrdenado of listaProductosOrdenados" class="mb-3 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
                                 <div class="contenedor-producto-ordenado">
                                     <div class="mb-1">
-                                        <button class="badge bg-danger span-block" (click)="eliminarProductoOrdenado(productoOrdenado)">
+                                        <button id="btn-eliminar-producto-ordenado" class="badge bg-danger span-block" (click)="eliminarProductoOrdenado(productoOrdenado)">
                                             <i class="bi bi-file-excel" aria-hidden="true"></i> Eliminar Producto
                                         </button>
                                     </div>
@@ -72,7 +72,7 @@
                 
                 <div class="row">
                     <div class="mt-3 mb-2 d-flex justify-content-center cursor-btn">
-                        <button id="guardarDatosButton" [disabled]="this.listaProductosOrdenados.length < 1" type="submit" class="btn btn-dark rounded-pill">Guardar</button>
+                        <button id="btn-ordenar-pedido" [disabled]="this.listaProductosOrdenados.length < 1 || pedidoForm.invalid" type="submit" class="btn btn-dark rounded-pill">Guardar</button>
                     </div>
                 </div>
             </div>
