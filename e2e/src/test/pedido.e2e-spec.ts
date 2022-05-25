@@ -123,8 +123,7 @@ describe('Page Pedido', () => {
         
         expect(await pedido.getAlertaExitosa().isPresent()).toEqual(true);
         expect(await page.getTitleTextByName('swal2-title')).toEqual('Hecho');
-
-        browser.sleep(1000); 
+        await pedido.clickOkSuccessAlertaByElementName('swal2-confirm');
         
         const cantidadPedidosCargados = await pedido.contarPedidosCargadosEnPanel();
         expect(cantidadPedidosCargados).toEqual(await pedido.contarPedidosCargadosEnPanel());
