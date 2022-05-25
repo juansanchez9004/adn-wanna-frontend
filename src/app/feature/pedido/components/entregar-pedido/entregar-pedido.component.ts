@@ -27,7 +27,7 @@ export class EntregarPedidoComponent implements OnInit {
           title: 'Hecho',
           text: 'El pedido ha sido entregado exitosamente.',
           showConfirmButton: true,
-          timer: 5000
+          timer: 3000
         });
 
         this.limpiarComponente();
@@ -37,7 +37,7 @@ export class EntregarPedidoComponent implements OnInit {
           title: 'Opps...',
           text: `Se ha generado un error. ${error.error.mensaje}`,
           showConfirmButton: true,
-          timer: 5000
+          timer: 3000
         });
 
         this.limpiarComponente();
