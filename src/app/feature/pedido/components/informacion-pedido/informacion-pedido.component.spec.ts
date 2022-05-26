@@ -33,12 +33,22 @@ describe('InformacionPedidoComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('iniciar componente', () => {
+  it('Informacion pedido sin la propiedad color asignada', () => {
     const informacionPedidoComponent = new InformacionPedidoComponent();
     informacionPedidoComponent.estadoPedido = 'PENDIENTE';
     informacionPedidoComponent.pedidoResumen = pedidoMockService.crearResumenPedidoPendiente();
     informacionPedidoComponent.ngOnInit();
     expect(informacionPedidoComponent.color).toBe('danger');
+    expect(informacionPedidoComponent.estadoPedido).toBe('PENDIENTE');
+  });
+
+  it('Informacion pedido con la propiedad color', () => {
+    const informacionPedidoComponent = new InformacionPedidoComponent();
+    informacionPedidoComponent.color = 'warning';
+    informacionPedidoComponent.estadoPedido = 'PENDIENTE';
+    informacionPedidoComponent.pedidoResumen = pedidoMockService.crearResumenPedidoPendiente();
+    informacionPedidoComponent.ngOnInit();
+    expect(informacionPedidoComponent.color).toBe('warning');
     expect(informacionPedidoComponent.estadoPedido).toBe('PENDIENTE');
   });
 });

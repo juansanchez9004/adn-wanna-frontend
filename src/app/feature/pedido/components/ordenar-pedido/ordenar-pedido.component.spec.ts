@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from '@core/services/http.service';
+import { ComandoSolicitudOrdenar } from '@pedido/shared/model/comando-solicitud-ordenar';
 import { PedidoService } from '@pedido/shared/service/pedido.service';
 import { PedidoMockService } from '@shared/mock/pedido-mock-service';
 import { of, throwError } from 'rxjs';
@@ -83,9 +84,6 @@ describe('OrdenarPedidoComponent', () => {
   });
 
   it('Ordenar pedido exitosamente', () => {
-    //const comandoSolicitud : ComandoSolicitudOrdenar = pedidoMockService.crearComandoSolicitudOrdenar();
-    
-    spyOn(service, 'crearOrden').and.returnValue(of(101));
     
     component.listaProductosOrdenados = (pedidoMockService.crearListadoProductosOrdenados());
     component.listaClientes = of(pedidoMockService.crearListadoClientes());
@@ -97,6 +95,27 @@ describe('OrdenarPedidoComponent', () => {
     expect(component.pedidoForm.valid).toBeTruthy();
 
     component.ordenarPedido();
+    
+    expect(component.listaProductosOrdenados.length).toEqual(3);
+    expect(component.pedidoForm.get('direccion').value).toBe('Calle 2 sur # 34 a');
+    expect(component.pedidoForm.get('municipio').value).toBe('Medellin');
+  });
+
+  it('Ordenar pedido exitosamente', () => {
+    const comandoSolicitud : ComandoSolicitudOrdenar = pedidoMockService.crearComandoSolicitudOrdenar();
+    
+    spyOn(service, 'crearOrden').withArgs(comandoSolicitud).and.returnValue(of(10));
+    
+    component.listaProductosOrdenados = (pedidoMockService.crearListadoProductosOrdenados());
+    component.listaClientes = of(pedidoMockService.crearListadoClientes());
+    
+    component.pedidoForm.controls.cliente.setValue(3);
+    component.pedidoForm.controls.direccion.setValue('Calle 2 sur # 34 a');
+    component.pedidoForm.controls.municipio.setValue('Medellin');
+
+    expect(component.pedidoForm.valid).toBeTruthy();
+
+    component.crearPedido(comandoSolicitud);
     
     expect(component.listaProductosOrdenados.length).toEqual(3);
   });
