@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TRM } from '@home/shared/model/trm';
+import { HomeService } from '../../shared/service/home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  trm: TRM ;
+  fechaTrm: string;
+
+  constructor(private homeService: HomeService) { }
 
   ngOnInit() {
+    this.inicializarTRM();
+    
+    this.fechaTrm = this.obtenerFechaActualTRM();
+
+    this.homeService.consultarTRM(this.fechaTrm).subscribe((response) => {
+        this.trm = response.data;
+    });
+  }
+
+  obtenerFechaActualTRM(): string {
+    const fechaActual = new Date();
+    return `${fechaActual.getFullYear()}-${(fechaActual.getMonth() + 1)}-${fechaActual.getDate()}`;
+  }
+
+  inicializarTRM() {
+    this.trm = {
+      unit: '',
+      validityFrom: undefined,
+      validityTo: undefined,
+      value: 0,
+      success: undefined
+    };
   }
 }
