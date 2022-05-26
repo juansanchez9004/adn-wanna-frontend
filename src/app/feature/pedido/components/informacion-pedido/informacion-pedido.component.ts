@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ResumenPedido } from '../../shared/model/resumen-pedido';
 
 @Component({
@@ -6,7 +6,7 @@ import { ResumenPedido } from '../../shared/model/resumen-pedido';
   templateUrl: './informacion-pedido.component.html',
   styleUrls: ['./informacion-pedido.component.css']
 })
-export class InformacionPedidoComponent {
+export class InformacionPedidoComponent implements OnInit {
 
   @Input() pedidoResumen: ResumenPedido;
   @Input() estadoPedido: string;
@@ -15,4 +15,6 @@ export class InformacionPedidoComponent {
   constructor() { 
     this.color = (this.color === undefined ? 'danger' : this.color);
   }
+
+  ngOnInit(): void {}
 }
