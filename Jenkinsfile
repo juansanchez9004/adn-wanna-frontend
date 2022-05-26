@@ -1,4 +1,4 @@
-@Library('ceiba-jenkins-library') _
+
 pipeline {
 
     //Donde se va a ejecutar el Pipeline
@@ -12,8 +12,12 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+    triggers {
+        pollSCM('* * * * *')
+    }
+
     tools {
-        jdk 'JDK8_Centos' //Verisión preinstalada en la Configuración del Master
+        jdk 'JDK17_Centos' //Verisión preinstalada en la Configuración del Master
     }
 
     //Aquí comienzan los “items” del Pipeline
@@ -40,6 +44,7 @@ pipeline {
         
         stage('Static Code Analysis') {
             steps {
+                echo "------------>Análisis de código estático<------------"
                 sonarqubeMasQualityGatesP(
                         sonarKey:'co.com.ceiba.adn:wanna.front.pablo.tabares',
                         sonarName:'''"CeibaADN-wanna-Front(pablo.tabares)"''',
