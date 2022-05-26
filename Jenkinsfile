@@ -16,6 +16,11 @@ pipeline {
         pollSCM('* * * * *')
     }
 
+    tools {
+        jdk 'JDK17_Centos' //Verisión preinstalada en la Configuración del Master
+    }
+
+
     //Aquí comienzan los “items” del Pipeline
     stages {
         stage('Checkout') {
