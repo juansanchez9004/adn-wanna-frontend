@@ -13,8 +13,10 @@ export class InformacionPedidoComponent implements OnInit {
   @Input() color: string | undefined;
 
   constructor() { 
-    this.color = (this.color === undefined ? 'danger' : this.color);
+    this.pedidoResumen = new ResumenPedido(0, '', '', 0, '');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.color = (this.color === undefined ? 'danger' : this.color);
+  }
 }
