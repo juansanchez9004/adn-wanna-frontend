@@ -1,4 +1,4 @@
-
+@Library('ceiba-jenkins-library') _
 pipeline {
 
     //Donde se va a ejecutar el Pipeline
@@ -12,14 +12,9 @@ pipeline {
         disableConcurrentBuilds()
     }
 
-    triggers {
-        pollSCM('* * * * *')
-    }
-
     tools {
-        jdk 'JDK17_Centos' //Verisión preinstalada en la Configuración del Master
+        jdk 'JDK8_Centos' //Verisión preinstalada en la Configuración del Master
     }
-
 
     //Aquí comienzan los “items” del Pipeline
     stages {
