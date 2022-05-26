@@ -1,4 +1,4 @@
-@Library('ceiba-jenkins-library@master') _
+
 pipeline {
 
     //Donde se va a ejecutar el Pipeline
@@ -10,6 +10,10 @@ pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr: '3'))
         disableConcurrentBuilds()
+    }
+
+    triggers {
+        pollSCM('* * * * *')
     }
 
     //Aquí comienzan los “items” del Pipeline
@@ -31,13 +35,6 @@ pipeline {
             steps {
                 echo "------------>Testing<------------"
                 sh 'npm run test'
-            }
-        }
-        
-        stage('Test end-to-end') {
-            steps{
-                echo "------------>Testing Protractor<------------"
-                sh 'npm run e2e'
             }
         }
         
