@@ -22,17 +22,11 @@ export class AgregarProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.listaProductos = this.pedidoService.consultarTodosLosProductos();
-    this.productoSeleccionado = null;
-    this.cantidad = 0;
-    this.valor = 0;
+    this.limpiarPanelAgregarProducto();
   }
 
   inhabilitarAgregar() {
-    if(this.hayProductoSeleccionado() && this.hayCantidadPermitida()) {
-      return false;
-    } else {
-      return true;
-    }
+    return ((this.hayProductoSeleccionado() && this.hayCantidadPermitida()) ? false : true);
   }
 
   private hayProductoSeleccionado() {

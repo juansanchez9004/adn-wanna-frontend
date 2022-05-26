@@ -16,12 +16,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.inicializarTRM();
-    
     this.fechaTrm = this.obtenerFechaActualTRM();
-
-    this.homeService.consultarTRM(this.fechaTrm).subscribe((response) => {
-        this.trm = response.data;
-    });
+    this.obtenerTRM();
   }
 
   obtenerFechaActualTRM(): string {
@@ -37,5 +33,11 @@ export class HomeComponent implements OnInit {
       value: 0,
       success: undefined
     };
+  }
+
+  obtenerTRM() {
+    this.homeService.consultarTRM(this.fechaTrm).subscribe((response) => {
+      this.trm = response.data;
+    });
   }
 }

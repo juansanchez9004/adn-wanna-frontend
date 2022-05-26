@@ -19,7 +19,7 @@ const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 40;
 })
 export class OrdenarPedidoComponent implements OnInit {
   
-  public listaClientes: Observable<Cliente[]>;
+  listaClientes: Observable<Cliente[]>;
 
   pedidoForm: FormGroup;
 
@@ -35,8 +35,11 @@ export class OrdenarPedidoComponent implements OnInit {
 
   ordenarPedido() {
     const comandoSolicitudOrdenar: ComandoSolicitudOrdenar = this.crearComandoSolicitudOrdenar();
+    this.crearPedido(comandoSolicitudOrdenar);
+  }
 
-    this.pedidoService.crearOrden(comandoSolicitudOrdenar).subscribe(response => {
+  crearPedido(comandoSolictudOrdenar: ComandoSolicitudOrdenar) {
+    this.pedidoService.crearOrden(comandoSolictudOrdenar).subscribe(response => {
       if (response[`valor`] !== undefined) {
         Swal.fire({
           icon: 'success',
@@ -110,6 +113,10 @@ export class OrdenarPedidoComponent implements OnInit {
 
   private inicializarPedido() {
     this.listaProductosOrdenados = [];
+    this.resetearPedidoForm();
+  }
+
+  private resetearPedidoForm() {
     this.pedidoForm.reset();
   }
 }

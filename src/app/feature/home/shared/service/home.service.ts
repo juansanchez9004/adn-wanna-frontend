@@ -8,15 +8,14 @@ import { RespuestaServicioTRM } from '../model/respuesta-servicio-trm';
 })
 export class HomeService {
 
-  urlData: string = './assets/data.json';
+  private urlData: string = './assets/data.json';
 
   constructor(protected http: HttpService) { }
 
   public consultarTRM(fechaActualTRM: string) {
-    let parametros = new HttpParams().set('date', fechaActualTRM);
-    let optiones: Options = {
-      params: parametros
+    let options: Options = {
+      params: new HttpParams().set('date', fechaActualTRM)
     };
-    return this.http.doGet<RespuestaServicioTRM>(`${this.urlData}`, optiones);
+    return this.http.doGet<RespuestaServicioTRM>(`${this.urlData}`, options);
   }
 }
