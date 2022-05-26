@@ -3,9 +3,7 @@ import { Options, HttpService } from '@core-service/http.service';
 import { HttpParams } from '@angular/common/http';
 import { RespuestaServicioTRM } from '../model/respuesta-servicio-trm';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HomeService {
 
   private urlData: string = './assets/data.json';
