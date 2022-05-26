@@ -4,11 +4,11 @@
 
         <div class="container-fluid">
             <fieldset class="fieldset-custom">
-                <legend id="legend-informacion-entrega" class="legend-custom">Información TRM</legend>
+                <legend id="legend-informacion-trm" class="legend-custom">Información TRM</legend>
 
                 <div class="row mt-3">
                     <div class="mb-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-                        <p>TRM valido desde <strong>{{trm.validityFrom | date }}</strong> hasta <strong>{{trm.validityTo | date }}</strong> con un valor de: <strong>{{trm.value | currency}}</strong> </p>
+                        <p id="parrago-informacion">TRM valido desde <strong>{{trm.validityFrom | date }}</strong> hasta <strong>{{trm.validityTo | date }}</strong> con un valor de: <strong>{{trm.value | currency}}</strong> </p>
                     </div>
                 </div>
             </fieldset>
