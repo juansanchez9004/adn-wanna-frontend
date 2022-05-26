@@ -14,6 +14,12 @@ pipeline {
 
     //Aquí comienzan los “items” del Pipeline
     stages {
+        stage('Checkout') {
+            steps {
+                echo "------------>Checkout<------------"
+            }
+        }
+        
         stage('NPM Install') {
             steps {
                 echo "------------>Installing<------------"
