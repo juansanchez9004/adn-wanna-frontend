@@ -83,7 +83,7 @@ describe('OrdenarPedidoComponent', () => {
     expect(component.listaProductosOrdenados).toEqual([]);
   });
 
-  it('Ordenar pedido exitosamente', () => {
+  it('Ordenar pedido de forma exitosa', () => {
     
     component.listaProductosOrdenados = (pedidoMockService.crearListadoProductosOrdenados());
     component.listaClientes = of(pedidoMockService.crearListadoClientes());
@@ -101,19 +101,12 @@ describe('OrdenarPedidoComponent', () => {
     expect(component.pedidoForm.get('municipio').value).toBe('Medellin');
   });
 
-  it('Ordenar pedido exitosamente', () => {
+  it('Crear pedido exitosamente', () => {
     const comandoSolicitud : ComandoSolicitudOrdenar = pedidoMockService.crearComandoSolicitudOrdenar();
     
-    spyOn(service, 'crearOrden').withArgs(comandoSolicitud).and.returnValue(of(10));
-    
     component.listaProductosOrdenados = (pedidoMockService.crearListadoProductosOrdenados());
-    component.listaClientes = of(pedidoMockService.crearListadoClientes());
     
-    component.pedidoForm.controls.cliente.setValue(3);
-    component.pedidoForm.controls.direccion.setValue('Calle 2 sur # 34 a');
-    component.pedidoForm.controls.municipio.setValue('Medellin');
-
-    expect(component.pedidoForm.valid).toBeTruthy();
+    spyOn(service, 'crearOrden').withArgs(comandoSolicitud).and.returnValue(of(10));
 
     component.crearPedido(comandoSolicitud);
     
